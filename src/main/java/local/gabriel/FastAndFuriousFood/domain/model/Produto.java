@@ -17,20 +17,19 @@ public class Produto {
     
     @Id
     private long id;
-    
+    private String categoria;
     private String nome;
     private double preco;
-    private double qntd;
     private String linkImagem;
 
     public Produto() {
     }
 
-    public Produto(long id, String nome, double preco, double qntd, String linkImagem) {
+    public Produto(long id, String categoria, String nome, double preco, String linkImagem) {
         this.id = id;
+        this.categoria = categoria;
         this.nome = nome;
         this.preco = preco;
-        this.qntd = qntd;
         this.linkImagem = linkImagem;
     }
 
@@ -40,6 +39,14 @@ public class Produto {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public String getNome() {
@@ -58,14 +65,6 @@ public class Produto {
         this.preco = preco;
     }
 
-    public double getQntd() {
-        return qntd;
-    }
-
-    public void setQntd(double qntd) {
-        this.qntd = qntd;
-    }
-
     public String getLinkImagem() {
         return linkImagem;
     }
@@ -74,6 +73,7 @@ public class Produto {
         this.linkImagem = linkImagem;
     }
 
+    
     @Override
     public int hashCode() {
         int hash = 5;
