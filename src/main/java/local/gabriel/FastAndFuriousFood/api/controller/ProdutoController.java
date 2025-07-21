@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import local.gabriel.FastAndFuriousFood.domain.model.Produto;
 import local.gabriel.FastAndFuriousFood.domain.repository.ProdutoRepository;
+import local.gabriel.FastAndFuriousFood.model.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/fastfurious")
 public class ProdutoController {
    
+    @Autowired
+    private ProdutoService produtoService;
+    
     @Autowired
     private ProdutoRepository produtoRepository;
     
@@ -61,7 +65,7 @@ public class ProdutoController {
             return ResponseEntity.notFound().build();
         }
         produto.setId(id);
-        produto = produtoRepository.save(produto);
+        produto = produtoService.salvar(produto);
         return ResponseEntity.ok(produto);
     }
     
@@ -71,13 +75,13 @@ public class ProdutoController {
             return ResponseEntity.notFound().build();
         }
        
-        produtoRepository.deleteById(id);
+        produtoService.excluir(id);
         return ResponseEntity.noContent().build();
     }
     
     @GetMapping("/produto/cat/{categoria}")
     public ResponseEntity<Produto> buscarCat(@PathVariable String categoria){
-      Optional<Produto> produto = produtoRepository.findByCategoria(categoria);
+      Optional<Produto> produto = produtoService.findByCategoria(categoria);
         
         if(produto.isPresent()) {
             return ResponseEntity.ok(produto.get());
