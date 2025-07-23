@@ -9,5 +9,5 @@ package local.gabriel.FastAndFuriousFood.domain.model;
  * @author ppjata
  */
 public enum StatusPedido {
-    ABERTO, CANCELADO, PRONTO
+    ABERTO, ENTREGUE, PRONTO
 }

@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Produto;
-import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
 import local.gabriel.FastAndFuriousFood.domain.repository.ItemPedidoRepository;
 import local.gabriel.FastAndFuriousFood.domain.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +39,6 @@ public class ItemPedidoService {
         itemPedido.setPreco(precoTotal);
         
         itemPedido.setPreco(precoTotal);
-        itemPedido.setStatus(StatusPedido.ABERTO);
-        itemPedido.setDataAbertura(LocalDateTime.now());
         
         return itemPedidoRepository.save(itemPedido);
     }
