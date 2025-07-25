@@ -6,22 +6,26 @@ package local.gabriel.FastAndFuriousFood.api.controller;
 
 import java.util.List;
 import java.util.Optional;
+import local.gabriel.FastAndFuriousFood.DTO.ProdutoStatusDTO;
 import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Pedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Produto;
+import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
 import local.gabriel.FastAndFuriousFood.domain.repository.PedidoRepository;
 import local.gabriel.FastAndFuriousFood.model.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import static org.springframework.data.projection.EntityProjection.ProjectionType.DTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import static org.springframework.http.ResponseEntity.status;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -75,24 +79,36 @@ public class PedidoController {
     if (pedidoOptional.isEmpty()) {
         return ResponseEntity.notFound().build();
     }
-
     Pedido pedidoExistente = pedidoOptional.get();
-
-    // Atualizar status
     pedidoExistente.setStatus(pedidoAtualizado.getStatus());
-
-    // Limpar itens antigos (se necessário)
     pedidoExistente.getItens().clear();
 
-    // Adicionar os novos itens e garantir que cada item aponte pro pedido
     for (ItemPedido item : pedidoAtualizado.getItens()) {
         item.setPedido(pedidoExistente);
         pedidoExistente.getItens().add(item);
     }
 
-    // Salvar o pedido com os novos dados
     Pedido pedidoSalvo = pedidoRepository.save(pedidoExistente);
-
+    
     return ResponseEntity.ok(pedidoSalvo);
 }
-}
+    
+    
+    @GetMapping("/pedido/status/{status}")
+    public ResponseEntity<Pedido> buscarPorStatus(@PathVariable StatusPedido status) {
+        Optional<Pedido> pedido = pedidoRepository.findByStatus(status);
+        
+        if(pedido.isPresent()) {
+            return ResponseEntity.ok(pedido.get());
+        }else {
+            return ResponseEntity.notFound().build();
+        }
+     }
+    
+    @PutMapping("pedido/status/{id}")
+    public ResponseEntity<List<Pedido>> buscarPedidosPorStatusComDto(@ModelAttribute ProdutoStatusDTO pedidoStatusDto) {
+        // Agora você pode acessar pedidoStatusDto.getStatus()
+        List<Pedido> pedidos = pedidoService.buscarPorStatus(pedidoStatusDto.getStatus());
+        return ResponseEntity.ok(pedidos);
+    }
+    }

@@ -5,9 +5,11 @@
 package local.gabriel.FastAndFuriousFood.model.service;
 
 
+import java.util.List;
 import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Pedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Produto;
+import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
 import local.gabriel.FastAndFuriousFood.domain.repository.PedidoRepository;
 import local.gabriel.FastAndFuriousFood.domain.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,11 @@ public class PedidoService {
     
      public Pedido salvar(Pedido pedido){
         return pedidoRepository.save(pedido);
+    }
+     
+     public List<Pedido> buscarPorStatus(Enum status) {
+        // Delega a busca ao método findByStatus do PedidoRepository
+        return pedidoRepository.findByStatus(status);
     }
     
     }

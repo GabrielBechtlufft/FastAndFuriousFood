@@ -4,7 +4,10 @@
  */
 package local.gabriel.FastAndFuriousFood.domain.repository;
 
+import java.util.List;
+import java.util.Optional;
 import local.gabriel.FastAndFuriousFood.domain.model.Pedido;
+import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +15,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author ppjata
  */
 public interface PedidoRepository extends JpaRepository<Pedido, Long>{
+    Optional<Pedido> findByStatus(StatusPedido status);
     
+    List<Pedido> findByStatus(Enum status);
 }

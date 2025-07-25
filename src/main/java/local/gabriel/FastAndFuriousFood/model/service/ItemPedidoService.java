@@ -4,9 +4,6 @@
  */
 package local.gabriel.FastAndFuriousFood.model.service;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import java.time.LocalDateTime;
 import java.util.List;
 import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Produto;
