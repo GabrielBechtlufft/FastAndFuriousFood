@@ -106,9 +106,16 @@ public class PedidoController {
      }
     
     @PutMapping("pedido/status/{id}")
-    public ResponseEntity<List<Pedido>> buscarPedidosPorStatusComDto(@ModelAttribute ProdutoStatusDTO pedidoStatusDto) {
-        // Agora você pode acessar pedidoStatusDto.getStatus()
-        List<Pedido> pedidos = pedidoService.buscarPorStatus(pedidoStatusDto.getStatus());
-        return ResponseEntity.ok(pedidos);
+    public ResponseEntity<Pedido> atualizarStatus(
+        @PathVariable Long id,
+        @RequestBody ProdutoStatusDTO statusDTO) {
+
+    Pedido pedido = pedidoRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+    pedido.setStatus(statusDTO.getStatus());
+    pedidoRepository.save(pedido);
+
+    return ResponseEntity.ok(pedido);
     }
     }
