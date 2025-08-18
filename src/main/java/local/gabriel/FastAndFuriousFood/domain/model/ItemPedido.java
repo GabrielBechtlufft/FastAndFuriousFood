@@ -14,7 +14,7 @@ import jakarta.persistence.ManyToOne;
 
 /**
  *
- * @author ppjata
+ * @author HyperStudioCode
  */
 @Entity
 public class ItemPedido {

@@ -9,18 +9,14 @@ import java.util.Optional;
 import local.gabriel.FastAndFuriousFood.DTO.ProdutoStatusDTO;
 import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
 import local.gabriel.FastAndFuriousFood.domain.model.Pedido;
-import local.gabriel.FastAndFuriousFood.domain.model.Produto;
 import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
 import local.gabriel.FastAndFuriousFood.domain.repository.PedidoRepository;
 import local.gabriel.FastAndFuriousFood.model.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import static org.springframework.data.projection.EntityProjection.ProjectionType.DTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import static org.springframework.http.ResponseEntity.status;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author ppjata
+ * @author HyperStudioCode
  */
 @RestController
 @RequestMapping("/fastfurious")
