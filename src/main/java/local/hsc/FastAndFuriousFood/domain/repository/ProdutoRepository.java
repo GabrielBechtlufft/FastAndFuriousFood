@@ -2,15 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package local.gabriel.FastAndFuriousFood.domain.repository;
+package local.hsc.FastAndFuriousFood.domain.repository;
 
-import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
+import java.util.Optional;
+import local.hsc.FastAndFuriousFood.domain.model.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author ppjata
  */
-public interface ItemPedidoRepository extends JpaRepository<ItemPedido, Long> {
-    
+public interface ProdutoRepository extends JpaRepository<Produto , Long> {
+    Optional<Produto> findByCategoria(String categoria);
 }

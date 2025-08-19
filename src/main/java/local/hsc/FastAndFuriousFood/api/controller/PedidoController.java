@@ -2,16 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package local.gabriel.FastAndFuriousFood.api.controller;
+package local.hsc.FastAndFuriousFood.api.controller;
 
 import java.util.List;
 import java.util.Optional;
-import local.gabriel.FastAndFuriousFood.DTO.ProdutoStatusDTO;
-import local.gabriel.FastAndFuriousFood.domain.model.ItemPedido;
-import local.gabriel.FastAndFuriousFood.domain.model.Pedido;
-import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
-import local.gabriel.FastAndFuriousFood.domain.repository.PedidoRepository;
-import local.gabriel.FastAndFuriousFood.model.service.PedidoService;
+import local.hsc.FastAndFuriousFood.DTO.ProdutoStatusDTO;
+import local.hsc.FastAndFuriousFood.domain.model.ItemPedido;
+import local.hsc.FastAndFuriousFood.domain.model.Pedido;
+import local.hsc.FastAndFuriousFood.domain.model.StatusPedido;
+import local.hsc.FastAndFuriousFood.domain.repository.PedidoRepository;
+import local.hsc.FastAndFuriousFood.model.service.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

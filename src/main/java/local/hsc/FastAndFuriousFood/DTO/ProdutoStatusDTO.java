@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package local.gabriel.FastAndFuriousFood.DTO;
+package local.hsc.FastAndFuriousFood.DTO;
 
-import local.gabriel.FastAndFuriousFood.domain.model.StatusPedido;
+import local.hsc.FastAndFuriousFood.domain.model.StatusPedido;
 
 /**
  *
